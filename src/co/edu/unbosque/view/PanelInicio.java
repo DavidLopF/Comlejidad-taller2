@@ -66,10 +66,10 @@ public class PanelInicio extends JPanel {
         b.setIcon(icon);
     }
 
-    public void iniciarLabelTexto(int pos, String texto, int x, int y, int alto, int ancho, int tamañoLetra, Color colorLetra) {
+    public void iniciarLabelTexto(int pos, String texto, int x, int y, int alto, int ancho, int tamanoLetra, Color colorLetra) {
         labels[pos] = new JLabel(texto);
         labels[pos].setBounds(x, y, ancho, alto);
-        labels[pos].setFont(new Font("Century Gothic", Font.BOLD, tamañoLetra));
+        labels[pos].setFont(new Font("Century Gothic", Font.BOLD, tamanoLetra));
         labels[pos].setForeground(colorLetra);
         add(labels[pos]);
     }

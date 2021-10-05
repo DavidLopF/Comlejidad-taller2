@@ -1,5 +1,6 @@
 package co.edu.unbosque.controller;
 
+import co.edu.unbosque.model.persistance.Archivo;
 import co.edu.unbosque.view.VentanaPrincipal;
 
 import javax.swing.*;
@@ -11,6 +12,8 @@ import java.io.File;
 
 public class Controller extends Component implements ActionListener {
     private VentanaPrincipal view;
+    private Archivo archivo;
+    private File file;
 
     public Controller() {
         view = new VentanaPrincipal();
@@ -26,7 +29,10 @@ public class Controller extends Component implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if (command.equals("CHOOSE")) {
-            System.out.println(view.getPanelInicio().abrirChooser());
+            file = new File(view.getPanelInicio().abrirChooser());
+            archivo = new Archivo(file);
+            String texto = archivo.leerArchivo(file);
+            System.out.println(texto);
         }
 
     }
