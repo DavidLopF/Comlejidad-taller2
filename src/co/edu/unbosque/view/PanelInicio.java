@@ -84,9 +84,7 @@ public class PanelInicio extends JPanel {
         jf.setMultiSelectionEnabled(false);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo TXT", "txt");
         jf.setFileFilter(filter);
-        //mostrar el gestor de archivos y no deja hacer nada hasta que se selcione el archivo o me salga con cancelar
         jf.showOpenDialog(this);
-        //agarre lo que seleciona
         File seleccion_ruta = jf.getSelectedFile();
         return seleccion_ruta.getAbsolutePath();
 

@@ -12,15 +12,20 @@ import java.util.ArrayList;
 public class Archivo {
 	private InputStreamReader entrada;
 	private ObjectOutputStream salida;
+	private File archivo;
 
 	public Archivo(File archivo) {
-		if (archivo.exists()) {
+
+		this.archivo = archivo;
+		if (this.archivo.exists()) {
 			System.out.println("Existe");
 		} else {
 			System.out.println("No existe");
 		}
 	}
-	
+
+
+
 	/**
 	 * 			try {
 				archivo.createNewFile();
@@ -29,7 +34,7 @@ public class Archivo {
 				e.printStackTrace();
 			}
 	 */
-	public String leerArchivo(File archivo) {
+	public String leerArchivo() {
 		String salidaS = "";
 		if (archivo.length() != 0) {
 			try {
