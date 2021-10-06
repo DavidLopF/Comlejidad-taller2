@@ -60,6 +60,8 @@ public class PanelInicio extends JPanel {
     }
 
 
+
+
     public void devolverImagenLabel(String src, String tipo, int escalax, int escalay, JLabel b) {
         ImageIcon imagen1 = new ImageIcon(ClassLoader.getSystemResource("Images/" + src + "." + tipo));
         ImageIcon icon = new ImageIcon(imagen1.getImage().getScaledInstance(escalax, escalay, Image.SCALE_DEFAULT));
@@ -93,6 +95,7 @@ public class PanelInicio extends JPanel {
     public JButton getChoose() {
         return choose;
     }
+
 
 }
 

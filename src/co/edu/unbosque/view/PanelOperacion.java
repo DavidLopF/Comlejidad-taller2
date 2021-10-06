@@ -16,8 +16,8 @@ public class PanelOperacion extends JPanel {
     private JButton boton;
     private JTextArea texto;
 
-    
-    public PanelOperacion(){
+
+    public PanelOperacion() {
         setLayout(null);
         setVisible(false);
         setBackground(Color.RED);
@@ -25,11 +25,11 @@ public class PanelOperacion extends JPanel {
     }
 
     private void inicializarComponentes() {
-        labels =  new JLabel[2];
+        labels = new JLabel[2];
         iniciarLabelTexto(0, "Algoritmo para realizar busqueda: ", 390, 80, 70, 300, 13, Color.white);
 
         algortmos = new JComboBox();
-        algortmos.setBounds(410,130, 200, 25 );
+        algortmos.setBounds(410, 130, 200, 25);
         algortmos.addItem("");
         algortmos.addItem("KMP");
         algortmos.addItem("BM");
@@ -37,13 +37,13 @@ public class PanelOperacion extends JPanel {
 
         iniciarLabelTexto(0, "Ingrese palabra a buscar: ", 390, 150, 70, 300, 13, Color.white);
 
-        palabra =  new JTextField();
-        palabra.setBounds(410,200,200,25);
+        palabra = new JTextField();
+        palabra.setBounds(410, 200, 200, 25);
         add(palabra);
 
         boton = new JButton("Buscar palabra");
         boton.setBackground(new Color(248, 244, 232, 255));
-        boton.setActionCommand("PALABRA");
+        boton.setActionCommand("BUSCAR");
         boton.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
         boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         boton.setBounds(470, 240, 80, 30);
@@ -67,10 +67,10 @@ public class PanelOperacion extends JPanel {
 
         texto = new JTextArea();
         texto.setBounds(40, 40, 290, 500);
-        texto.setBackground(new Color(248,244,232,255));
+        texto.setBackground(new Color(248, 244, 232, 255));
         JScrollPane jp = new JScrollPane(texto);
         jp.setBounds(40, 40, 290, 500);
-        jp.setBackground(new Color(248,244,232,255));
+        jp.setBackground(new Color(248, 244, 232, 255));
         jp.setBorder(null);
         add(jp);
 
@@ -87,7 +87,20 @@ public class PanelOperacion extends JPanel {
         b.setIcon(icon);
     }
 
-    public void cargarTextoTxT(String text){
+    public String validarBox() {
+        String res = "";
+        if (algortmos.getSelectedIndex() == 0) {
+            res = null;
+        } else if (algortmos.getSelectedIndex() == 1) {
+            res = "KMP";
+        } else if (algortmos.getSelectedIndex() == 2) {
+            res = "BM";
+        }
+
+        return res;
+    }
+
+    public void cargarTextoTxT(String text) {
         texto.append(text);
     }
 
@@ -99,7 +112,17 @@ public class PanelOperacion extends JPanel {
         add(labels[pos]);
     }
 
+    public String obtenerPalabra() {
+        String res = palabra.getText();
 
+        if (!res.isEmpty() && !res.equals(" ")) {
+            return res;
+        } else {
+            return null;
+        }
+    }
 
-
+    public JButton getBoton() {
+        return boton;
+    }
 }
