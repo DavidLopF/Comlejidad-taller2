@@ -57,24 +57,19 @@ public class Controller extends Component implements ActionListener {
                     if (palabra != null) {
                         palabra = palabra.toLowerCase(Locale.ROOT);
                         texto = texto.toLowerCase(Locale.ROOT);
-                        texto = texto.replace("!", " ");
-                        texto = texto.replace("¡", " ");
-                        texto = texto.replace(".", " ");
-                        texto = texto.replace("?", " ");
-                        texto = texto.replace("¿", " ");
-                        texto = texto.replace("-", " ");
-                        texto = texto.replace("/n", "");
-                        texto = texto.replace(",", " ");
+
+
+                        System.out.println(texto);
                         ArrayList<Integer> resultado = algoritmos.KMP(texto, palabra);
 
                         for (int i = 0; i < resultado.size(); i++) {
 
-                            int posicion = resultado.get(i);
-                            int fin = posicion + palabra.length();
+                            if(i > 0){
+                                int posicion = resultado.get(i);
+                                int fin = posicion + palabra.length();
 
-                            System.out.println(texto.substring(posicion-1,fin-1));
-
-
+                                System.out.println(texto.substring(posicion - 1, fin - 1));
+                            }
                         }
 
 
