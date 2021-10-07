@@ -75,6 +75,17 @@ public class Controller extends Component implements ActionListener {
                 } else if (select == "BP") { //validaciones del bp :)
                     String palabra = view.getPanelOperacion().obtenerPalabra();
                     if (palabra != null) {
+                        palabra = palabra.toLowerCase(Locale.ROOT);
+                        char textoLista[] = texto.toLowerCase(Locale.ROOT).toCharArray();
+                        char pat[] = palabra.toCharArray();
+                        String posiciones[] = (algoritmos.search(textoLista, pat)).split("-");
+                        int cantidadRepetido = 0;
+                        for (int i = posiciones.length - 1; i < posiciones.length; i++) {
+                            cantidadRepetido = Integer.parseInt(posiciones[i]);
+                            posiciones[i] = "";
+                        }
+
+
 
                     } else {
                         view.mensajeAlerta("Error", "Por favor ingrese palabra a buscar :)."
