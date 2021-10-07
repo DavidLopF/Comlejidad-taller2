@@ -72,8 +72,9 @@ public class Controller extends Component implements ActionListener {
                                 , view.devolverImagenButton("error", "png", 50, 50));
                     }
 
-                } else if (select == "BP") { //validaciones del bp :)
+                } else if (select == "BM") { //validaciones del bp :)
                     String palabra = view.getPanelOperacion().obtenerPalabra();
+                    System.out.println("paso");
                     if (palabra != null) {
                         palabra = palabra.toLowerCase(Locale.ROOT);
                         char textoLista[] = texto.toLowerCase(Locale.ROOT).toCharArray();
@@ -84,8 +85,7 @@ public class Controller extends Component implements ActionListener {
                             cantidadRepetido = Integer.parseInt(posiciones[i]);
                             posiciones[i] = "";
                         }
-
-
+                        System.out.println(cantidadRepetido);
 
                     } else {
                         view.mensajeAlerta("Error", "Por favor ingrese palabra a buscar :)."
