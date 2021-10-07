@@ -2,10 +2,14 @@ package co.edu.unbosque.view;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class PanelOperacion extends JPanel {
 
@@ -120,6 +124,31 @@ public class PanelOperacion extends JPanel {
         } else {
             return null;
         }
+    }
+
+    public void modificarTexto(String text) {
+        texto.setText(text);
+    }
+
+    public void subrrayarPalabra(ArrayList<Integer> posiciones, String palabra) {
+        DefaultHighlighter.DefaultHighlightPainter highlightPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.yellow);
+        Highlighter h = texto.getHighlighter();
+        h.removeAllHighlights();
+        try {
+            for (int i = 0; i < posiciones.size(); i++) {
+                if (i > 0) {
+                    int posicion = posiciones.get(i) - 1;
+                    int fin = posicion + palabra.length();
+
+                    h.addHighlight(posicion, fin, highlightPainter);
+                }
+            }
+            repaint();
+
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public JButton getBoton() {

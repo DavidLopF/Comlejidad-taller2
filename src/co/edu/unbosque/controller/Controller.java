@@ -57,18 +57,14 @@ public class Controller extends Component implements ActionListener {
                     if (palabra != null) {
                         palabra = limpiarString(palabra);
                         String text =  limpiarString(texto);
-                        System.out.println(text);
                         ArrayList<Integer> resultado = algoritmos.KMP(text, palabra);
-
+                        view.getPanelOperacion().modificarTexto(text);
                         for (int i = 0; i < resultado.size(); i++) {
-
                             if(i > 0){
-                                int posicion = resultado.get(i);
-                                int fin = posicion + palabra.length();
-
-                                System.out.println(text.substring(posicion - 1, fin - 1));
+                                view.getPanelOperacion().subrrayarPalabra(resultado , palabra);
                             }
                         }
+
 
 
                     } else {
