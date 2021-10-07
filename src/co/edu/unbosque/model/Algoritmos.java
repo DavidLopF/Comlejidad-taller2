@@ -2,6 +2,7 @@ package co.edu.unbosque.model;
 
 
 import java.util.ArrayList;
+
 /**
  * authors: David Lopez, Juan Ruiz, Jose Navas, Daniel Niño, Juan Camilo Diaz
  */
@@ -14,12 +15,13 @@ public class Algoritmos {
      * metodo para inicializar variables
      */
     public Algoritmos() {
-        NO_OF_CHARS = 256;
+        NO_OF_CHARS = 10000;
     }
 
     /**
      * Método encargado de hacer algoritmo de busqueda por fuerza bruta KMP
-     * @param cadena1 texto string.
+     *
+     * @param cadena1   texto string.
      * @param subcadena palabra a buscar.
      * @return Posiciones en las que se encuentra la palabra
      */
@@ -46,6 +48,7 @@ public class Algoritmos {
 
     /**
      * Método encargado el maximo entre dos números
+     *
      * @param a número 1
      * @param b número 2
      * @return Boolean
@@ -56,6 +59,7 @@ public class Algoritmos {
 
     /**
      * metodo para compararhasta los 256
+     *
      * @param str
      * @param size
      * @param badchar
@@ -70,6 +74,7 @@ public class Algoritmos {
 
     /**
      * Metodo para buscar el algoritmo por posicion
+     *
      * @param txt string con el texto
      * @param pat palabra a buscar
      * @return
@@ -100,4 +105,6 @@ public class Algoritmos {
         }
         return text + cont;
     }
+
+    
 }

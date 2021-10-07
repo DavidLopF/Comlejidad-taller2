@@ -91,6 +91,7 @@ public class Controller extends Component implements ActionListener {
                 } else if (select == "BP") { //validaciones del bp :)
                     String palabra = view.getPanelOperacion().obtenerPalabra();
                     if (palabra != null) {
+
                         palabra = palabra.toLowerCase(Locale.ROOT);
                         char textoLista[] = texto.toLowerCase(Locale.ROOT).toCharArray();
                         char pat[] = palabra.toCharArray();
@@ -100,10 +101,7 @@ public class Controller extends Component implements ActionListener {
                             cantidadRepetido = Integer.parseInt(posiciones[i]);
                             posiciones[i] = "";
                         }
-                        System.out.println(cantidadRepetido);
-                        for (int j = 0; j < posiciones.length; j++) {
-                            System.out.println(posiciones[j]);
-                        }
+
                         ArrayList<Integer> resultado = new ArrayList<>();
                         for (int i = 0; i < posiciones.length; i++) {
                             if (posiciones[i] == "") {
