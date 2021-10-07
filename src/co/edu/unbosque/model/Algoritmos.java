@@ -2,15 +2,24 @@ package co.edu.unbosque.model;
 
 
 import java.util.ArrayList;
+/**
+ * authors: David Lopez, Juan Ruiz, Jose Navas, Daniel Niño, Juan Camilo Diaz
+ */
 
 public class Algoritmos {
 
     private int NO_OF_CHARS;
 
+    /**
+     * metodo para inicializar variables
+     */
     public Algoritmos() {
         NO_OF_CHARS = 256;
     }
 
+    /**
+     * metodo para generar el algoritmo de busqueda KMP
+     */
     public ArrayList<Integer> KMP(String cadena1, String subcadena) {
         ArrayList<Integer> lugares = new ArrayList<Integer>();
         int lugar = 0;
@@ -32,10 +41,16 @@ public class Algoritmos {
     }
 
 
-    /*Algoritmo BM*/
+    /**
+     * metodo para hallar el max
+     */
     public int max(int a, int b) {
         return (a > b) ? a : b;
     }
+
+    /**
+     * metodo para buscar comparar
+     */
 
     public void badCharHeuristic(char[] str, int size, int badchar[]) {
         for (int i = 0; i < NO_OF_CHARS; i++)
@@ -43,6 +58,10 @@ public class Algoritmos {
         for (int i = 0; i < size; i++)
             badchar[(int) str[i]] = i;
     }
+
+    /**
+     * metodo para buscar usando la palabra
+     */
 
     public String search(char txt[], char pat[]) {
         int m = pat.length;

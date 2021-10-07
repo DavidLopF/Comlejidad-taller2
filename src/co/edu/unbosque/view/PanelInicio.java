@@ -7,11 +7,22 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
 import java.io.File;
 
+/**
+ * authors: David Lopez, Juan Ruiz, Jose Navas, Daniel Niño, Juan Camilo Diaz
+ */
+
+
+
 public class PanelInicio extends JPanel {
 
     private JLabel[] labels;
     private JLabel fondo;
     private JButton choose;
+
+    /**
+     *Metodo para inicializar las variables del panel
+     */
+
 
     public PanelInicio() {
         setLayout(null);
@@ -20,7 +31,9 @@ public class PanelInicio extends JPanel {
         inicializarComponentes();
     }
 
-
+    /**
+     *Metodo para inicializar variables
+     */
     private void inicializarComponentes() {
 
         labels = new JLabel[3];

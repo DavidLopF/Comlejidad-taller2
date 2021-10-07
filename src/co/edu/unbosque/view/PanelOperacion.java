@@ -29,7 +29,7 @@ public class PanelOperacion extends JPanel {
     }
 
     private void inicializarComponentes() {
-        labels = new JLabel[2];
+        labels = new JLabel[5];
         iniciarLabelTexto(0, "Algoritmo para realizar busqueda: ", 390, 80, 70, 300, 13, Color.white);
 
         algortmos = new JComboBox();
@@ -40,6 +40,9 @@ public class PanelOperacion extends JPanel {
         add(algortmos);
 
         iniciarLabelTexto(0, "Ingrese palabra a buscar: ", 390, 150, 70, 300, 13, Color.white);
+        iniciarLabelTexto(0, "Ingrese palabra a buscar: ", 390, 150, 70, 300, 13, Color.white);
+        iniciarLabelTexto(1, "", 430, 350, 70, 300, 13, Color.white);
+        iniciarLabelTexto(2, "", 430, 380, 70, 300, 13, Color.white);
 
         palabra = new JTextField();
         palabra.setBounds(410, 200, 200, 25);
@@ -78,6 +81,7 @@ public class PanelOperacion extends JPanel {
         jp.setBorder(null);
         add(jp);
 
+
         fondo = new JLabel();
         devolverImagenLabel("panel2", "png", 700, 600, fondo);
         fondo.setBounds(0, 0, 700, 600);
@@ -91,6 +95,17 @@ public class PanelOperacion extends JPanel {
         b.setIcon(icon);
     }
 
+    public void cambiarFondo(String palabra, String encontrada) {
+        remove(fondo);
+        labels[1].setText(palabra);
+        labels[2].setText(encontrada);
+        devolverImagenLabel("busqueda", "png", 700, 600, fondo);
+        add(fondo);
+        repaint();
+    }
+
+
+
     public String validarBox() {
         String res = "";
         if (algortmos.getSelectedIndex() == 0) {
@@ -98,18 +113,30 @@ public class PanelOperacion extends JPanel {
         } else if (algortmos.getSelectedIndex() == 1) {
             res = "KMP";
         } else if (algortmos.getSelectedIndex() == 2) {
-            res = "BM";
+            res = "BP";
         }
 
         return res;
     }
 
+    /**
+     * @param text
+     */
     public void cargarTextoTxT(String text) {
         texto.append(text);
     }
 
     public void iniciarLabelTexto(int pos, String texto, int x, int y, int alto, int ancho, int tamañoLetra, Color colorLetra) {
         labels[pos] = new JLabel(texto);
+        labels[pos].setBounds(x, y, ancho, alto);
+        labels[pos].setFont(new Font("Century Gothic", Font.BOLD, tamañoLetra));
+        labels[pos].setForeground(colorLetra);
+        add(labels[pos]);
+    }
+
+    public void iniciarLabelTexto(int pos, String texto, int x, int y, int alto, int ancho, int tamañoLetra, Color colorLetra, Boolean visible) {
+        labels[pos] = new JLabel(texto);
+        labels[pos].setVisible(visible);
         labels[pos].setBounds(x, y, ancho, alto);
         labels[pos].setFont(new Font("Century Gothic", Font.BOLD, tamañoLetra));
         labels[pos].setForeground(colorLetra);
@@ -126,21 +153,29 @@ public class PanelOperacion extends JPanel {
         }
     }
 
-    public void modificarTexto(String text) {
-        texto.setText(text);
-    }
-
-    public void subrrayarPalabra(ArrayList<Integer> posiciones, String palabra) {
-        DefaultHighlighter.DefaultHighlightPainter highlightPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.yellow);
+    public void subrrayarPalabra(ArrayList<Integer> posiciones, String palabra, String algoritmo) {
+        DefaultHighlighter.DefaultHighlightPainter highlightPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN);
         Highlighter h = texto.getHighlighter();
         h.removeAllHighlights();
         try {
-            for (int i = 0; i < posiciones.size(); i++) {
-                if (i > 0) {
+            if (algoritmo.equals("KMP")) {
+                for (int i = 0; i < posiciones.size(); i++) {
+
                     int posicion = posiciones.get(i) - 1;
                     int fin = posicion + palabra.length();
 
                     h.addHighlight(posicion, fin, highlightPainter);
+
+                }
+                repaint();
+            } else if (algoritmo.equals("BP")) {
+                for (int i = 0; i < posiciones.size(); i++) {
+
+                    int posicion = posiciones.get(i) - 1;
+                    int fin = posicion + palabra.length() + 1;
+
+                    h.addHighlight(posicion, fin, highlightPainter);
+
                 }
             }
             repaint();
