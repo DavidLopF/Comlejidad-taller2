@@ -61,7 +61,7 @@ public class Algoritmos {
                 j--;
             if (j < 0) {
                 cont++;
-                text = text + s + "\n";
+                text = text + s + "-";
                 s += (s + m < n) ? m - badchar[txt[s + m]] : 1;
 
             } else
