@@ -55,12 +55,10 @@ public class Controller extends Component implements ActionListener {
                 if (select == "KMP") { //validaciones kmp
                     String palabra = view.getPanelOperacion().obtenerPalabra();
                     if (palabra != null) {
-                        palabra = palabra.toLowerCase(Locale.ROOT);
-                        texto = texto.toLowerCase(Locale.ROOT);
-
-
-                        System.out.println(texto);
-                        ArrayList<Integer> resultado = algoritmos.KMP(texto, palabra);
+                        palabra = limpiarString(palabra);
+                        String text =  limpiarString(texto);
+                        System.out.println(text);
+                        ArrayList<Integer> resultado = algoritmos.KMP(text, palabra);
 
                         for (int i = 0; i < resultado.size(); i++) {
 
@@ -68,7 +66,7 @@ public class Controller extends Component implements ActionListener {
                                 int posicion = resultado.get(i);
                                 int fin = posicion + palabra.length();
 
-                                System.out.println(texto.substring(posicion - 1, fin - 1));
+                                System.out.println(text.substring(posicion - 1, fin - 1));
                             }
                         }
 
@@ -95,6 +93,18 @@ public class Controller extends Component implements ActionListener {
         }
 
     }
+
+    public String limpiarString(String text){
+        text = text.toLowerCase(Locale.ROOT);
+        text =  text.replace("á" , "a");
+        text =  text.replace("é" , "e");
+        text =  text.replace("í" , "i");
+        text =  text.replace("ó" , "o");
+        text =  text.replace("ú" , "u");
+        return text;
+    }
+
+
 
     public void cambiarPanel(Component panel) {
         view.getContentPane().removeAll();
