@@ -74,13 +74,17 @@ public class PanelInicio extends JPanel {
 
 
 
-
+    /**
+     *Metodo para devolver imagen
+     */
     public void devolverImagenLabel(String src, String tipo, int escalax, int escalay, JLabel b) {
         ImageIcon imagen1 = new ImageIcon(ClassLoader.getSystemResource("Images/" + src + "." + tipo));
         ImageIcon icon = new ImageIcon(imagen1.getImage().getScaledInstance(escalax, escalay, Image.SCALE_DEFAULT));
         b.setIcon(icon);
     }
-
+    /**
+     *Metodo para las etiquetas de texto
+     */
     public void iniciarLabelTexto(int pos, String texto, int x, int y, int alto, int ancho, int tamanoLetra, Color colorLetra) {
         labels[pos] = new JLabel(texto);
         labels[pos].setBounds(x, y, ancho, alto);
@@ -88,11 +92,15 @@ public class PanelInicio extends JPanel {
         labels[pos].setForeground(colorLetra);
         add(labels[pos]);
     }
-
+    /**
+     *Metodo para recibir las etiquetas
+     */
     public JLabel[] getLabels() {
         return labels;
     }
-
+    /**
+     *Metodo para las para abrir y seleccionar archivo
+     */
     public String abrirChooser() {
         JFileChooser jf = new JFileChooser();
         jf.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -104,7 +112,9 @@ public class PanelInicio extends JPanel {
         return seleccion_ruta.getAbsolutePath();
 
     }
-
+    /**
+     *Metodo para recibir el chooser
+     */
     public JButton getChoose() {
         return choose;
     }

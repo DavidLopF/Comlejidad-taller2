@@ -18,7 +18,10 @@ public class Algoritmos {
     }
 
     /**
-     * metodo para generar el algoritmo de busqueda KMP
+     * Método encargado de hacer algoritmo de busqueda por fuerza bruta KMP
+     * @param cadena1 texto string.
+     * @param subcadena palabra a buscar.
+     * @return Posiciones en las que se encuentra la palabra
      */
     public ArrayList<Integer> KMP(String cadena1, String subcadena) {
         ArrayList<Integer> lugares = new ArrayList<Integer>();
@@ -42,14 +45,20 @@ public class Algoritmos {
 
 
     /**
-     * metodo para hallar el max
+     * Método encargado el maximo entre dos números
+     * @param a número 1
+     * @param b número 2
+     * @return Boolean
      */
     public int max(int a, int b) {
         return (a > b) ? a : b;
     }
 
     /**
-     * metodo para buscar comparar
+     * metodo para compararhasta los 256
+     * @param str
+     * @param size
+     * @param badchar
      */
 
     public void badCharHeuristic(char[] str, int size, int badchar[]) {
@@ -60,7 +69,10 @@ public class Algoritmos {
     }
 
     /**
-     * metodo para buscar usando la palabra
+     * Metodo para buscar el algoritmo por posicion
+     * @param txt string con el texto
+     * @param pat palabra a buscar
+     * @return
      */
 
     public String search(char txt[], char pat[]) {

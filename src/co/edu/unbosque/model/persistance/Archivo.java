@@ -9,11 +9,20 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+
+/**
+ * authors: David Lopez, Juan Ruiz, Jose Navas, Daniel Niño, Juan Camilo Diaz
+ */
+
 public class Archivo {
 	private InputStreamReader entrada;
 	private ObjectOutputStream salida;
 	private File archivo;
 
+	/**
+	 * Método constructor de la clase Archivo.
+	 * @param archivo File
+	 */
 	public Archivo(File archivo) {
 
 		this.archivo = archivo;
@@ -25,14 +34,9 @@ public class Archivo {
 	}
 
 
-
 	/**
-	 * 			try {
-				archivo.createNewFile();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	 * Metodo encargado de leer archivo txt
+	 * @return string con las lineas del archivo txt
 	 */
 	public String leerArchivo() {
 		String salidaS = "";

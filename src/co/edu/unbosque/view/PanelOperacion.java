@@ -11,6 +11,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+/**
+ * authors: David Lopez, Juan Ruiz, Jose Navas, Daniel Niño, Juan Camilo Diaz
+ */
+
 public class PanelOperacion extends JPanel {
 
     private JLabel[] labels;
@@ -20,13 +24,19 @@ public class PanelOperacion extends JPanel {
     private JButton boton;
     private JTextArea texto;
 
-
+    /**
+     * Método constructor de la clase PanelOperacion
+     */
     public PanelOperacion() {
         setLayout(null);
         setVisible(false);
         setBackground(Color.RED);
         inicializarComponentes();
     }
+
+    /**
+     * Método encargado de buscar componentes de la vista.
+     */
 
     private void inicializarComponentes() {
         labels = new JLabel[5];
@@ -88,6 +98,16 @@ public class PanelOperacion extends JPanel {
         add(fondo);
     }
 
+
+    /**
+     * Método encarcado de cargar un icon en un label
+     *
+     * @param src nombre del archivo
+     * @param tipo tipo de archivo
+     * @param escalax escala x del icon
+     * @param escalay escala y del icon
+     * @param b
+     */
 
     public void devolverImagenLabel(String src, String tipo, int escalax, int escalay, JLabel b) {
         ImageIcon imagen1 = new ImageIcon(ClassLoader.getSystemResource("Images/" + src + "." + tipo));
