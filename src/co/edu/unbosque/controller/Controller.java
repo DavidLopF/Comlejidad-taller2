@@ -41,10 +41,8 @@ public class Controller extends Component implements ActionListener {
     public void asignarListeners() {
         view.getPanelInicio().getChoose().addActionListener(this);
         view.getPanelOperacion().getBoton().addActionListener(this);
+        view.getPanelOperacion().getVolver().addActionListener(this);
     }
-
-    @Override
-
 
 
     /**
@@ -126,6 +124,9 @@ public class Controller extends Component implements ActionListener {
                 view.mensajeAlerta("Error", "No se ha seleccionado ningun algoritmo de busqueda."
                         , view.devolverImagenButton("error", "png", 50, 50));
             }
+        }else if(command.equals("VOLVER")){
+            cambiarPanel(view.getPanelInicio());
+            view.getPanelOperacion().limpiarComponentes();
         }
 
     }

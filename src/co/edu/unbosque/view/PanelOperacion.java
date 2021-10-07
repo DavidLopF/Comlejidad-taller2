@@ -14,14 +14,13 @@ import java.util.ArrayList;
 /**
  * authors: David Lopez, Juan Ruiz, Jose Navas, Daniel Niño, Juan Camilo Diaz
  */
-
 public class PanelOperacion extends JPanel {
 
     private JLabel[] labels;
     private JComboBox algortmos;
     private JLabel fondo;
     private JTextField palabra;
-    private JButton boton;
+    private JButton boton, volver;
     private JTextArea texto;
 
     /**
@@ -82,6 +81,17 @@ public class PanelOperacion extends JPanel {
         boton.addMouseListener(ml);
         add(boton);
 
+        volver = new JButton("Volver");
+        volver.setBackground(new Color(248, 244, 232, 255));
+        volver.setActionCommand("VOLVER");
+        volver.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+        volver.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        volver.setBounds(475, 500, 80, 30);
+
+        volver.setFont(new Font("Century Gothic", Font.PLAIN, 10));
+        volver.addMouseListener(ml);
+        add(volver);
+
         texto = new JTextArea();
         texto.setBounds(40, 40, 290, 500);
         texto.setBackground(new Color(248, 244, 232, 255));
@@ -102,11 +112,11 @@ public class PanelOperacion extends JPanel {
     /**
      * Método encarcado de cargar un icon en un label
      *
-     * @param src nombre del archivo
-     * @param tipo tipo de archivo
+     * @param src     nombre del archivo
+     * @param tipo    tipo de archivo
      * @param escalax escala x del icon
      * @param escalay escala y del icon
-     * @param b
+     * @param b       label en eque se va a cargar el icon
      */
 
     public void devolverImagenLabel(String src, String tipo, int escalax, int escalay, JLabel b) {
@@ -114,6 +124,13 @@ public class PanelOperacion extends JPanel {
         ImageIcon icon = new ImageIcon(imagen1.getImage().getScaledInstance(escalax, escalay, Image.SCALE_DEFAULT));
         b.setIcon(icon);
     }
+
+    /**
+     * Método encargado de cambiar el fondo del jpanel
+     *
+     * @param palabra    Palabra de la busqueda
+     * @param encontrada Cantidad de veces repetidas
+     */
 
     public void cambiarFondo(String palabra, String encontrada) {
         remove(fondo);
@@ -124,7 +141,11 @@ public class PanelOperacion extends JPanel {
         repaint();
     }
 
-
+    /**
+     * Método encargado de validar cual es la opcion seleccionada en el checkbox
+     *
+     * @return Stirng con la opcion seleccionada
+     */
 
     public String validarBox() {
         String res = "";
@@ -140,12 +161,26 @@ public class PanelOperacion extends JPanel {
     }
 
     /**
+     * Método encargado de cargar texto en el jtextarea
+     *
      * @param text
      */
     public void cargarTextoTxT(String text) {
         texto.append(text);
     }
 
+    /**
+     * Método encargado de inicializar labels
+     *
+     * @param pos
+     * @param texto
+     * @param x
+     * @param y
+     * @param alto
+     * @param ancho
+     * @param tamañoLetra
+     * @param colorLetra
+     */
     public void iniciarLabelTexto(int pos, String texto, int x, int y, int alto, int ancho, int tamañoLetra, Color colorLetra) {
         labels[pos] = new JLabel(texto);
         labels[pos].setBounds(x, y, ancho, alto);
@@ -154,6 +189,18 @@ public class PanelOperacion extends JPanel {
         add(labels[pos]);
     }
 
+
+    /**
+     * @param pos
+     * @param texto
+     * @param x
+     * @param y
+     * @param alto
+     * @param ancho
+     * @param tamañoLetra
+     * @param colorLetra
+     * @param visible
+     */
     public void iniciarLabelTexto(int pos, String texto, int x, int y, int alto, int ancho, int tamañoLetra, Color colorLetra, Boolean visible) {
         labels[pos] = new JLabel(texto);
         labels[pos].setVisible(visible);
@@ -163,6 +210,9 @@ public class PanelOperacion extends JPanel {
         add(labels[pos]);
     }
 
+    /**
+     * @return
+     */
     public String obtenerPalabra() {
         String res = palabra.getText();
 
@@ -173,6 +223,28 @@ public class PanelOperacion extends JPanel {
         }
     }
 
+    /**
+     * Metodo para limpiar componentes
+     */
+    public void limpiarComponentes(){
+        algortmos.setSelectedIndex(0);
+        palabra.setText("");
+        texto.setText("");
+        labels[1].setText("");
+        labels[2].setText("");
+        remove(fondo);
+        devolverImagenLabel("panel2", "png", 700, 600, fondo);
+        add(fondo);
+        repaint();
+
+    }
+
+    /**
+     * Metodo pararesaltar la palabra que se desea encontrar
+     * @param posiciones
+     * @param palabra
+     * @param algoritmo
+     */
     public void subrrayarPalabra(ArrayList<Integer> posiciones, String palabra, String algoritmo) {
         DefaultHighlighter.DefaultHighlightPainter highlightPainter = new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN);
         Highlighter h = texto.getHighlighter();
@@ -206,6 +278,18 @@ public class PanelOperacion extends JPanel {
 
     }
 
+    /**
+     * Metodo para obtener el valor del boton de volver
+     * @return
+     */
+    public JButton getVolver() {
+        return volver;
+    }
+
+    /**
+     * metodo para devolver el valor de boton de buscar
+     * @return
+     */
     public JButton getBoton() {
         return boton;
     }

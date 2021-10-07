@@ -6,6 +6,10 @@ package co.edu.unbosque.controller;
 
 
 public class Main {
+    /**
+     * Metodo para iniciar el programa
+     * @param args
+     */
     public static void main(String args []){
         Controller c = new Controller();
     }

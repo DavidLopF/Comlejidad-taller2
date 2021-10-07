@@ -77,7 +77,7 @@ public class Algoritmos {
      *
      * @param txt string con el texto
      * @param pat palabra a buscar
-     * @return
+     * @return posiciones con en las que coinciden el texto
      */
 
     public String search(char txt[], char pat[]) {
@@ -106,5 +106,5 @@ public class Algoritmos {
         return text + cont;
     }
 
-    
+
 }
